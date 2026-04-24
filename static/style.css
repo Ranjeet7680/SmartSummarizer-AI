@@ -1,0 +1,723 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0a0e27;
+    --bg-secondary: #151932;
+    --bg-card: #1e2139;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a3bd;
+    --accent: #6c5ce7;
+    --accent-hover: #5f4fd1;
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success: #00b894;
+    --border: #2d3250;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+body.light-mode {
+    --bg-primary: #f5f6fa;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    --border: #dfe6e9;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Mobile Header Adjustments */
+@media (max-width: 768px) {
+    .header {
+        padding: 30px 15px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(180deg);
+    border-color: var(--accent);
+}
+
+/* Main Content */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}
+
+.card {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(108, 92, 231, 0.2);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* Mobile Card Adjustments */
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+    
+    .card h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Upload Area */
+.upload-area {
+    border: 3px dashed var(--border);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: var(--accent);
+    background: rgba(108, 92, 231, 0.1);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.browse-link {
+    color: var(--accent);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Mobile Upload Area */
+@media (max-width: 768px) {
+    .upload-area {
+        padding: 30px 20px;
+        border-radius: 12px;
+    }
+    
+    .upload-icon {
+        font-size: 2.5rem;
+    }
+    
+    .upload-area p {
+        font-size: 0.95rem;
+    }
+    
+    .upload-area small {
+        font-size: 0.85rem;
+    }
+}
+
+/* Text Input */
+.text-input {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 15px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+/* Mobile Text Input */
+@media (max-width: 768px) {
+    .text-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px;
+        min-height: 150px;
+    }
+}
+
+/* Controls */
+.controls {
+    margin-top: 20px;
+}
+
+.length-control {
+    margin-bottom: 20px;
+}
+
+.length-control label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.length-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.length-btn {
+    flex: 1;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.length-btn:hover {
+    border-color: var(--accent);
+}
+
+.length-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.length-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Length Buttons */
+@media (max-width: 768px) {
+    .length-buttons {
+        gap: 8px;
+    }
+    
+    .length-btn {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .length-btn:hover {
+        transform: none;
+    }
+}
+
+/* Summarize Button */
+.summarize-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--gradient);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.summarize-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+}
+
+.summarize-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.summarize-btn:active {
+    transform: scale(0.98);
+}
+
+/* Mobile Summarize Button */
+@media (max-width: 768px) {
+    .summarize-btn {
+        padding: 14px;
+        font-size: 1rem;
+    }
+    
+    .summarize-btn:hover {
+        transform: none;
+    }
+}
+
+/* Loader */
+.loader {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.stats strong {
+    color: var(--accent);
+}
+
+/* Mobile Stats */
+@media (max-width: 768px) {
+    .stats {
+        font-size: 0.85rem;
+        gap: 8px;
+    }
+    
+    .stats span {
+        flex: 1 1 auto;
+    }
+}
+
+/* Output Content */
+.output-content {
+    min-height: 300px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 260px;
+    color: var(--text-secondary);
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.summary-text {
+    line-height: 1.8;
+    font-size: 1.05rem;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Mobile Output Content */
+@media (max-width: 768px) {
+    .output-content {
+        min-height: 200px;
+        padding: 15px;
+    }
+    
+    .placeholder {
+        min-height: 170px;
+    }
+    
+    .placeholder-icon {
+        font-size: 3rem;
+    }
+    
+    .placeholder p {
+        font-size: 0.9rem;
+    }
+    
+    .summary-text {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Copy Button */
+.copy-btn {
+    padding: 8px 16px;
+    background: var(--success);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.copy-btn:hover {
+    transform: scale(1.05);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Copy Button */
+@media (max-width: 768px) {
+    .copy-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+    
+    .copy-btn:hover {
+        transform: none;
+    }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    margin-top: 40px;
+    border-top: 2px solid var(--border);
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.developer-credit {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.developer-name {
+    color: var(--accent);
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Mobile Footer */
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 15px;
+        margin-top: 30px;
+        font-size: 0.9rem;
+    }
+    
+    .developer-credit {
+        font-size: 0.9rem;
+    }
+}
+
+/* Typing Animation */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(40, end);
+}
+
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+
+/* Prevent text size adjustment on orientation change */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+    button, a, input[type="file"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Notification positioning for mobile */
+@media (max-width: 768px) {
+    .notification {
+        left: 10px !important;
+        right: 10px !important;
+        top: 10px !important;
+        width: auto !important;
+        font-size: 0.9rem !important;
+        padding: 12px 20px !important;
+    }
+}
+
+/* Prevent horizontal scroll */
+body {
+    overflow-x: hidden;
+}
+
+/* Better focus states for accessibility */
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Loading state improvements */
+.summarize-btn:disabled {
+    pointer-events: none;
+}
+
+/* Small mobile devices (< 480px) */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.75rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .upload-area {
+        padding: 25px 15px;
+    }
+    
+    .upload-icon {
+        font-size: 2rem;
+    }
+    
+    .text-input {
+        min-height: 120px;
+    }
+    
+    .length-btn {
+        padding: 8px 6px;
+        font-size: 0.85rem;
+    }
+    
+    .summarize-btn {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+    
+    .stats {
+        font-size: 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .footer {
+        font-size: 0.85rem;
+        padding: 25px 10px;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .header {
+        padding: 20px 15px;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .main-content {
+        margin-top: 20px;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card {
+        border-width: 1px;
+    }
+    
+    .upload-area {
+        border-width: 2px;
+    }
+}
+
+/* Dark mode specific mobile adjustments */
+@media (max-width: 768px) {
+    body:not(.light-mode) .card {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Light mode specific mobile adjustments */
+@media (max-width: 768px) {
+    body.light-mode .card {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Improve readability on small screens */
+@media (max-width: 768px) {
+    .summary-text {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+}
+
+/* Better button feedback on mobile */
+@media (max-width: 768px) {
+    button:active {
+        opacity: 0.8;
+    }
+}
+
+/* Optimize animations for mobile */
+@media (max-width: 768px) {
+    * {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

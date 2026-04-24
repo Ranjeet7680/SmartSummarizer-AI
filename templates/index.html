@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="AI-powered text summarization tool with PDF support">
+    <meta name="theme-color" content="#6c5ce7">
+    <title>SmartSummarizer AI 🚀</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">
+                <span class="gradient-text">SmartSummarizer</span> AI
+            </h1>
+            <p class="subtitle">Powered by Advanced RNN & Transformer Models</p>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Section -->
+            <div class="input-section card">
+                <h2>📝 Input</h2>
+                
+                <!-- PDF Upload -->
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="pdfInput" accept=".pdf" hidden>
+                    <div class="upload-content">
+                        <span class="upload-icon">📄</span>
+                        <p>Drag & Drop PDF or <span class="browse-link">Browse</span></p>
+                        <small>Maximum file size: 10MB</small>
+                    </div>
+                </div>
+
+                <!-- Text Input -->
+                <textarea 
+                    id="inputText" 
+                    class="text-input" 
+                    placeholder="Or paste your text here..."
+                    rows="10"
+                ></textarea>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <div class="length-control">
+                        <label>Summary Length:</label>
+                        <div class="length-buttons">
+                            <button class="length-btn" data-length="short">Short</button>
+                            <button class="length-btn active" data-length="medium">Medium</button>
+                            <button class="length-btn" data-length="long">Long</button>
+                        </div>
+                    </div>
+                    
+                    <button class="summarize-btn" onclick="summarize()">
+                        <span class="btn-text">✨ Summarize</span>
+                        <span class="loader" style="display: none;"></span>
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats" id="inputStats">
+                    <span>Words: <strong id="inputWords">0</strong></span>
+                    <span>Characters: <strong id="inputChars">0</strong></span>
+                </div>
+            </div>
+
+            <!-- Output Section -->
+            <div class="output-section card">
+                <h2>🎯 Summary</h2>
+                
+                <div class="output-content" id="outputContent">
+                    <div class="placeholder">
+                        <span class="placeholder-icon">🤖</span>
+                        <p>Your AI-generated summary will appear here...</p>
+                    </div>
+                </div>
+
+                <!-- Output Stats -->
+                <div class="stats" id="outputStats" style="display: none;">
+                    <span>Words: <strong id="outputWords">0</strong></span>
+                    <span>Reduction: <strong id="reduction">0%</strong></span>
+                    <button class="copy-btn" onclick="copySummary()">📋 Copy</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built with ❤️ using Flask + Transformers + RNN</p>
+            <p class="developer-credit">Developed By <span class="developer-name">Ranjeet Kumar</span></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
